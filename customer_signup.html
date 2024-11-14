@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Domestic Fixes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script type="module" src="customer_signup.js" defer></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: #004780;
+            color: #ffffff;
+            text-align: center;
+        }
+        .login-container {
+            background: #ffffff;
+            color: #000000;
+            padding: 40px;
+            max-width: 400px;
+            margin: 100px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h3 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            background: #0066cc;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .login-container button:hover {
+            background: #005bb5;
+        }
+        .login-container a {
+            display: block;
+            margin-top: 10px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h3>Create Your Account</h3>
+        <form>
+            <input id="signupemail" type="email" placeholder="Email" required>
+            <input id="signupfullname" type="text" placeholder="Full Name" required>
+            <input id="signupphone" type="tel" placeholder="Phone Number" required>
+            <input id="signupeircode" type="text" placeholder="EIR Code" required>
+            <input id="signupcounty" type="text" placeholder="County" required>
+            <input id="signuppassword" type="password" placeholder="Password" required>
+            <input id="signupconfirm-password" type="password" placeholder="Confirm Password" required>
+            <button id="signupbutton" type="submit">Sign Up</button>
+        </form>
+        <a id="login-link" href="customer_login.html">Already have an account? Sign in</a>
+    </div>
+</body>
+</html>

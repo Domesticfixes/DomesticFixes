@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard - Domestic Fixes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .quotes-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .quote-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .quote-item h3 {
+            margin: 0;
+            color: #333;
+        }
+        .quote-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+        /* Styling for different statuses */
+        .pending {
+            background-color: yellow;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        .accepted {
+            color: green;
+            font-weight: bold;
+        }
+        .cancelled {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            max-height: 80%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .close-modal {
+            background: #333;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+        .scrollable-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding-right: 10px;
+        }
+        .quote-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        .quote-details {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .quote-details p {
+            margin: 5px 0;
+        }
+        .action-container {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             margin-top: 10px; /* Adjust for spacing between elements */
+        }
+
+        .blinking-text {
+            font-weight: bold;
+            color: black;
+            animation: blink-animation 1s steps(2, start) infinite;
+            margin-top:10px;
+           text-align: left;
+        }
+
+        .action-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: left;
+        }
+        .action-icons .acceptvtn{
+            width: 30px;margin-top: 4.6px; height: 30px; cursor: pointer;
+        }
+        @keyframes blink-animation {
+             to {
+                visibility: hidden;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Main heading -->
+    <h1>Customer Dashboard</h1>
+
+    <!-- Container for quotes -->
+    <div class="quotes-container">
+        <h2>Quotes Requested</h2>
+        <div id="user-info" style="margin-bottom: 20px; font-weight: bold;"></div>
+
+        <div id="quotes-list">
+            <!-- Customer requests will be dynamically added here from customer_dashboard.js -->
+        </div>
+    </div>
+
+   <!-- Modal for viewing the quote -->
+<div class="modal" id="handyman-quote-modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Quotes</h3>
+        <div id="handyman-quote-list" class="scrollable-list">
+            <!-- Individual quotes will be dynamically added here -->
+            <!-- Sample quote item structure -->
+            <div class="quote-item">
+                <div class="quote-details">
+                    <p><strong>Quote Amount:</strong> 80 EUR</p>
+                    <p><strong>Name:</strong> Example Handyman</p>
+                    <p><strong>Email:</strong> example@example.com</p>
+                    <p><strong>Phone Number:</strong> 1234567890</p>
+                </div>
+                <div class="action-container">
+                    <span class="blinking-text">Block {handymanname} now!!!</span>
+                    <div class="action-icons">
+                        <img src="images/accept.png" alt="Accept" class="acceptvtn" onclick="handleAcceptQuote('quoteId')">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button onclick="closeQuoteModal()">Close</button>
+    </div>
+</div>
+
+    <!-- Import the customer_dashboard.js file -->
+    <script type="module" src="customer_dashboard.js" defer></script>
+</body>
+</html>
